@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4dbe4b730f04294c5cce964a004240e4 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 28px; left: 28px; z-index:9999; background:white;
+            border:1px solid #777; border-radius:4px; padding:10px; font:13px Arial;">
+  <b>Approach 2 p-dit FDL selection</b><br>
+  <span style="color:#e31a1c;">●</span> Selected FDL (`K=12`)<br>
+  <span style="color:#1b9e77;">●</span> Ward covered within 15 min<br>
+  <span style="color:#bdbdbd;">●</span> Ward outside target coverage
+</div>
+    
+            <div class="folium-map" id="map_4dbe4b730f04294c5cce964a004240e4" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4dbe4b730f04294c5cce964a004240e4 = L.map(
+                "map_4dbe4b730f04294c5cce964a004240e4",
+                {
+                    center: [53.13665678571429, -3.509511892857143],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_4dbe4b730f04294c5cce964a004240e4);
+
+            
+
+        
+    
+            var tile_layer_c2a605d5c054aa6b49a2e30d95c142e6 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c2a605d5c054aa6b49a2e30d95c142e6.addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var circle_marker_7484cd593429d9127ef7c445e51635c4 = L.circleMarker(
+                [53.247285, -3.625288],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.52868068833652, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_7484cd593429d9127ef7c445e51635c4.bindTooltip(
+                `<div>
+                     <b>CRW01</b> — Betws yn Rhos<br>P0 demand: 3.78%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3750eaea2dd579e85026aff5ca80a20d = L.circleMarker(
+                [53.167471, -3.53043],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.227533460803059, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_3750eaea2dd579e85026aff5ca80a20d.bindTooltip(
+                `<div>
+                     <b>CRW02</b> — Llansannan<br>P0 demand: 1.63%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a999cfdd7453743a51ce0e68780b0f18 = L.circleMarker(
+                [53.232855, -3.442431],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.769598470363289, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_a999cfdd7453743a51ce0e68780b0f18.bindTooltip(
+                `<div>
+                     <b>CRW03</b> — Trefnant<br>P0 demand: 5.50%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9335514889070bb2731771b0dee05473 = L.circleMarker(
+                [53.258136, -3.453325],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.515296367112811, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_9335514889070bb2731771b0dee05473.bindTooltip(
+                `<div>
+                     <b>CRW04</b> — St. Asaph West<br>P0 demand: 3.68%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d37b4ce37358d21b793df896f6573847 = L.circleMarker(
+                [53.257254, -3.443087],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.361376673040153, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_d37b4ce37358d21b793df896f6573847.bindTooltip(
+                `<div>
+                     <b>CRW05</b> — St. Asaph East<br>P0 demand: 2.58%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_288b186a99d9a22a1576f72381f13a4b = L.circleMarker(
+                [53.265141, -3.382132],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.434990439770554, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_288b186a99d9a22a1576f72381f13a4b.bindTooltip(
+                `<div>
+                     <b>CRW06</b> — Tremeirchion<br>P0 demand: 3.11%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6572c0f68a32b23f986c6ec29cf47751 = L.circleMarker(
+                [53.184663, -3.429528],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.244741873804971, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_6572c0f68a32b23f986c6ec29cf47751.bindTooltip(
+                `<div>
+                     <b>CRW07</b> — Denbigh Upper/Henllan<br>P0 demand: 8.89%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f32786a992dd38379858a7782cc8ae5e = L.circleMarker(
+                [53.184304, -3.419729],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.164435946462715, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_f32786a992dd38379858a7782cc8ae5e.bindTooltip(
+                `<div>
+                     <b>CRW08</b> — Denbigh Central<br>P0 demand: 8.32%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_42d41f1cc572283913b59e5934b915ca = L.circleMarker(
+                [53.188753, -3.405343],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.769598470363289, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_42d41f1cc572283913b59e5934b915ca.bindTooltip(
+                `<div>
+                     <b>CRW09</b> — Denbigh Lower<br>P0 demand: 5.50%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_644b9a6b656bbd0cc74bf875556df6dc = L.circleMarker(
+                [53.16538, -3.334227],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.274378585086042, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_644b9a6b656bbd0cc74bf875556df6dc.bindTooltip(
+                `<div>
+                     <b>CRW10</b> — Llandyrnog<br>P0 demand: 1.96%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_47cb5d41f0742af381e49fe2ac074f97 = L.circleMarker(
+                [53.113727, -3.311426],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.3585086042065, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_47cb5d41f0742af381e49fe2ac074f97.bindTooltip(
+                `<div>
+                     <b>CRW11</b> — Ruthin<br>P0 demand: 9.70%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cf717fa7bea924b4c30273335e9d0f61 = L.circleMarker(
+                [53.129199, -3.275039],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.167304015296367, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_cf717fa7bea924b4c30273335e9d0f61.bindTooltip(
+                `<div>
+                     <b>CRW12</b> — Llanbedr Dyffryn Clwyd/Llangynhafal<br>P0 demand: 1.20%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_65ba0ebb69c2167dbb46d9ba40e90bfa = L.circleMarker(
+                [53.091159, -3.199384],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.475143403441683, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_65ba0ebb69c2167dbb46d9ba40e90bfa.bindTooltip(
+                `<div>
+                     <b>CRW13</b> — Llanarmon-yn-Ial/Llandegla<br>P0 demand: 3.39%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a0a4c698e78eb19ffc4a16a2c6ae014b = L.circleMarker(
+                [52.973314, -3.169596],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.17112810707457, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_a0a4c698e78eb19ffc4a16a2c6ae014b.bindTooltip(
+                `<div>
+                     <b>CRW14</b> — Llangollen<br>P0 demand: 8.37%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c5bb756f510376a8049075fa58e95b4f = L.circleMarker(
+                [53.047176, -3.313149],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.354684512428299, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_c5bb756f510376a8049075fa58e95b4f.bindTooltip(
+                `<div>
+                     <b>CRW15</b> — Llanfair Dyffryn Clwyd/Gwyddelwern<br>P0 demand: 2.53%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_31be01f6b35d2181ac5936f6238bc48d = L.circleMarker(
+                [52.980071, -3.352089],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.716061185468451, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_31be01f6b35d2181ac5936f6238bc48d.bindTooltip(
+                `<div>
+                     <b>CRW16</b> — Corwen<br>P0 demand: 5.11%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a13b159b21ff9c20d78c1ba315f79467 = L.circleMarker(
+                [52.941028, -3.421364],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.147227533460803, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_a13b159b21ff9c20d78c1ba315f79467.bindTooltip(
+                `<div>
+                     <b>CRW17</b> — Llandrillo<br>P0 demand: 1.05%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2e3520559f21b23fce824ee9adec55c4 = L.circleMarker(
+                [53.06178, -3.370897],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.167304015296367, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_2e3520559f21b23fce824ee9adec55c4.bindTooltip(
+                `<div>
+                     <b>CRW18</b> — Efenechtyd<br>P0 demand: 1.20%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_23fe7bdb0eeaf22293bd183dd4a7fe0a = L.circleMarker(
+                [53.140456, -3.415576],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.2007648183556405, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_23fe7bdb0eeaf22293bd183dd4a7fe0a.bindTooltip(
+                `<div>
+                     <b>CRW19</b> — Llanrhaeadr-yng-Nghinmeirch<br>P0 demand: 1.43%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5540a1d2f3e6d1aa196e05eef74b69c9 = L.circleMarker(
+                [53.025609, -3.537435],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.2007648183556405, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_5540a1d2f3e6d1aa196e05eef74b69c9.bindTooltip(
+                `<div>
+                     <b>CRW20</b> — Uwchaled<br>P0 demand: 1.43%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8fa207303a15274ad9941e49bd938a30 = L.circleMarker(
+                [53.139056, -3.681582],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.160611854684513, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_8fa207303a15274ad9941e49bd938a30.bindTooltip(
+                `<div>
+                     <b>CRW21</b> — Llangernyw<br>P0 demand: 1.15%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_53ac0a095da41aead038febedb2abae8 = L.circleMarker(
+                [53.081596, -3.780122],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.294455066921606, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_53ac0a095da41aead038febedb2abae8.bindTooltip(
+                `<div>
+                     <b>CRW22</b> — Uwch Conwy<br>P0 demand: 2.10%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a2f1f36b5f01ab0156cb95d2e0848b64 = L.circleMarker(
+                [53.137367, -3.79536],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.508604206500956, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_a2f1f36b5f01ab0156cb95d2e0848b64.bindTooltip(
+                `<div>
+                     <b>CRW23</b> — Crwst<br>P0 demand: 3.63%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a2f9aae40d4f0f455e59ebf92078156f = L.circleMarker(
+                [53.141504, -3.798807],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.2007648183556405, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_a2f9aae40d4f0f455e59ebf92078156f.bindTooltip(
+                `<div>
+                     <b>CRW24</b> — Gower<br>P0 demand: 1.43%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_22ddb8137ccaa1dc7d5e56742fd3027c = L.circleMarker(
+                [53.190767, -3.809745],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.374760994263863, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_22ddb8137ccaa1dc7d5e56742fd3027c.bindTooltip(
+                `<div>
+                     <b>CRW25</b> — Eglwysbach<br>P0 demand: 2.68%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b0008a42681debb1ec0c3f82b471fa1f = L.circleMarker(
+                [53.157222, -3.825803],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.160611854684513, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_b0008a42681debb1ec0c3f82b471fa1f.bindTooltip(
+                `<div>
+                     <b>CRW26</b> — Trefriw<br>P0 demand: 1.15%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3b08ac3dcfbe09c51fd761ad79904d03 = L.circleMarker(
+                [53.231402, -3.855358],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.247609942638623, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_3b08ac3dcfbe09c51fd761ad79904d03.bindTooltip(
+                `<div>
+                     <b>CRW27</b> — Caerhun<br>P0 demand: 1.77%<br>Covered within 15 min: True<br>Selected FDL: False
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e0645d61f0d23605cd8619cf05f3fda4 = L.circleMarker(
+                [53.092715, -3.888081],
+                {"bubblingMouseEvents": true, "color": "#333333", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1b9e77", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.803059273422562, "stroke": true, "weight": 1}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_e0645d61f0d23605cd8619cf05f3fda4.bindTooltip(
+                `<div>
+                     <b>CRW28</b> — Betws-y-Coed<br>P0 demand: 5.74%<br>Covered within 15 min: True<br>Selected FDL: True
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f853604826a74ad29f57bae8602a8568 = L.circleMarker(
+                [53.247285, -3.625288],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_f853604826a74ad29f57bae8602a8568.bindTooltip(
+                `<div>
+                     <b>FDL 1</b><br>CRW01 — Betws yn Rhos<br>p-dit state: 0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_71951a6b734b01878ddaeb37140f5d4a = L.marker(
+                [53.247285, -3.625288],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_3995cc405d2082835e9272c4efae74d9 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 1: CRW01\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_71951a6b734b01878ddaeb37140f5d4a.setIcon(div_icon_3995cc405d2082835e9272c4efae74d9);
+            
+    
+            var circle_marker_414ab470bab30314d06741c0a4ad5dce = L.circleMarker(
+                [53.258136, -3.453325],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_414ab470bab30314d06741c0a4ad5dce.bindTooltip(
+                `<div>
+                     <b>FDL 2</b><br>CRW04 — St. Asaph West<br>p-dit state: 3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0cc96f81ddf8424dc04e55341d7d9657 = L.marker(
+                [53.258136, -3.453325],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_24fb2f5006de01ff32705f8edf8929ad = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 2: CRW04\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_0cc96f81ddf8424dc04e55341d7d9657.setIcon(div_icon_24fb2f5006de01ff32705f8edf8929ad);
+            
+    
+            var circle_marker_edff07b76b9adab5f836abf35963a55b = L.circleMarker(
+                [53.184304, -3.419729],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_edff07b76b9adab5f836abf35963a55b.bindTooltip(
+                `<div>
+                     <b>FDL 3</b><br>CRW08 — Denbigh Central<br>p-dit state: 7
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f965472b2878405357f3720b85e8e71c = L.marker(
+                [53.184304, -3.419729],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_9d0fb4d7de299b2e92811f4b7cf28afd = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 3: CRW08\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f965472b2878405357f3720b85e8e71c.setIcon(div_icon_9d0fb4d7de299b2e92811f4b7cf28afd);
+            
+    
+            var circle_marker_c41d0ff9efabe8ff7e3601870545197e = L.circleMarker(
+                [53.113727, -3.311426],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_c41d0ff9efabe8ff7e3601870545197e.bindTooltip(
+                `<div>
+                     <b>FDL 4</b><br>CRW11 — Ruthin<br>p-dit state: 10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f47acf043173dc4774bbad3b9afac53b = L.marker(
+                [53.113727, -3.311426],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_f16c6c854d2f327cc7188c721594c1eb = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 4: CRW11\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f47acf043173dc4774bbad3b9afac53b.setIcon(div_icon_f16c6c854d2f327cc7188c721594c1eb);
+            
+    
+            var circle_marker_92b825e6b9b14d0d3814667d7fdd8797 = L.circleMarker(
+                [53.091159, -3.199384],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_92b825e6b9b14d0d3814667d7fdd8797.bindTooltip(
+                `<div>
+                     <b>FDL 5</b><br>CRW13 — Llanarmon-yn-Ial/Llandegla<br>p-dit state: 12
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f1ed421539e123c5ff1f37de0c5eb913 = L.marker(
+                [53.091159, -3.199384],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_70bc461c87c7cc7a97ff969d7b3e70be = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 5: CRW13\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_f1ed421539e123c5ff1f37de0c5eb913.setIcon(div_icon_70bc461c87c7cc7a97ff969d7b3e70be);
+            
+    
+            var circle_marker_11aa500ad0a3ba99b81b8e8233439b3e = L.circleMarker(
+                [52.973314, -3.169596],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_11aa500ad0a3ba99b81b8e8233439b3e.bindTooltip(
+                `<div>
+                     <b>FDL 6</b><br>CRW14 — Llangollen<br>p-dit state: 13
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_71cb5c6d1dfcb55e733064fa284cf800 = L.marker(
+                [52.973314, -3.169596],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_7e6540182c17343ccfa91f02c6f482e5 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 6: CRW14\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_71cb5c6d1dfcb55e733064fa284cf800.setIcon(div_icon_7e6540182c17343ccfa91f02c6f482e5);
+            
+    
+            var circle_marker_99b9d97cdf79ccd3c54d8572dc1c9328 = L.circleMarker(
+                [52.941028, -3.421364],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_99b9d97cdf79ccd3c54d8572dc1c9328.bindTooltip(
+                `<div>
+                     <b>FDL 7</b><br>CRW17 — Llandrillo<br>p-dit state: 16
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_05fc37ea7c0e269f36ba055e91a8bb2d = L.marker(
+                [52.941028, -3.421364],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_195f4e42683152b08ecdb4514b2e2f8f = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 7: CRW17\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_05fc37ea7c0e269f36ba055e91a8bb2d.setIcon(div_icon_195f4e42683152b08ecdb4514b2e2f8f);
+            
+    
+            var circle_marker_fde31994bdca6b9dfa4704289bf651b4 = L.circleMarker(
+                [53.025609, -3.537435],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_fde31994bdca6b9dfa4704289bf651b4.bindTooltip(
+                `<div>
+                     <b>FDL 8</b><br>CRW20 — Uwchaled<br>p-dit state: 19
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_074b5bedf3a10a31ebd1bfd85c7d5796 = L.marker(
+                [53.025609, -3.537435],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_d7da968cb378d113aa00f40ce3f769d1 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 8: CRW20\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_074b5bedf3a10a31ebd1bfd85c7d5796.setIcon(div_icon_d7da968cb378d113aa00f40ce3f769d1);
+            
+    
+            var circle_marker_1f45a0e4527f31dd3b683d018d1cd29c = L.circleMarker(
+                [53.139056, -3.681582],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_1f45a0e4527f31dd3b683d018d1cd29c.bindTooltip(
+                `<div>
+                     <b>FDL 9</b><br>CRW21 — Llangernyw<br>p-dit state: 20
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_52f044a770aab8532134760f57ea5ff4 = L.marker(
+                [53.139056, -3.681582],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_747cd4bbb837c3f628d920920062f9d5 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 9: CRW21\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_52f044a770aab8532134760f57ea5ff4.setIcon(div_icon_747cd4bbb837c3f628d920920062f9d5);
+            
+    
+            var circle_marker_ccbf9b201fe1cea6ccd523d048e778cc = L.circleMarker(
+                [53.137367, -3.79536],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_ccbf9b201fe1cea6ccd523d048e778cc.bindTooltip(
+                `<div>
+                     <b>FDL 10</b><br>CRW23 — Crwst<br>p-dit state: 22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6c8d7fc7171d1872248208d4cb077cb1 = L.marker(
+                [53.137367, -3.79536],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_c9af7c80b516fafd225cd473f4f7ed32 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 10: CRW23\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_6c8d7fc7171d1872248208d4cb077cb1.setIcon(div_icon_c9af7c80b516fafd225cd473f4f7ed32);
+            
+    
+            var circle_marker_4c4ff4d9ac87bda26ea6a00d9a770924 = L.circleMarker(
+                [53.157222, -3.825803],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_4c4ff4d9ac87bda26ea6a00d9a770924.bindTooltip(
+                `<div>
+                     <b>FDL 11</b><br>CRW26 — Trefriw<br>p-dit state: 25
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cd66a3022387a30693e861224c3bd527 = L.marker(
+                [53.157222, -3.825803],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_5e03da23d7dabb921375e03003fe2b33 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 11: CRW26\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_cd66a3022387a30693e861224c3bd527.setIcon(div_icon_5e03da23d7dabb921375e03003fe2b33);
+            
+    
+            var circle_marker_83588ff58c25964b0766454e4018b2ef = L.circleMarker(
+                [53.092715, -3.888081],
+                {"bubblingMouseEvents": true, "color": "#7f0000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e31a1c", "fillOpacity": 0.92, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13, "stroke": true, "weight": 2.5}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            circle_marker_83588ff58c25964b0766454e4018b2ef.bindTooltip(
+                `<div>
+                     <b>FDL 12</b><br>CRW28 — Betws-y-Coed<br>p-dit state: 27
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_396e37d51fb5fa833e0f510eb993cd82 = L.marker(
+                [53.092715, -3.888081],
+                {
+}
+            ).addTo(map_4dbe4b730f04294c5cce964a004240e4);
+        
+    
+            var div_icon_eaffb8407e8775cdd743f3a9f9964004 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10pt;font-weight:700;color:#7f0000;transform:translate(10px,-27px);white-space:nowrap;\"\u003eFDL 12: CRW28\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+                marker_396e37d51fb5fa833e0f510eb993cd82.setIcon(div_icon_eaffb8407e8775cdd743f3a9f9964004);
+            
+</script>
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "nwp-fdo-presentation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "export:html": "node scripts/export-html.mjs",
+    "export:pdf": "node scripts/export-pdf.mjs --deck=all",
+    "export:pdf:full": "node scripts/export-pdf.mjs --deck=full",
+    "export:pdf:showcase": "node scripts/export-pdf.mjs --deck=showcase"
+  },
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "pdf-lib": "^1.17.1",
+    "puppeteer-core": "^25.3.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "8.5.19"
+  }
+}
